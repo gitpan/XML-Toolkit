@@ -17,14 +17,15 @@ no_index:
     - inc
     - t
 requires:
-  Encode: 0
+  Encode: 2.26
   Moose: 0.60
   Moose::Autobox: 0.08
   MooseX::AttributeHelpers: 0.13
-  MooseX::Types::Path::Class: 0
-  Template: 0
+  MooseX::MetaDescription: 0.03
+  MooseX::Types::Path::Class: 0.04
+  Template: 2.20
   XML::SAX: 0.96
-  XML::SAX::Writer: 0
+  XML::SAX::Writer: 0.50
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.0.1
+version: 0.02
