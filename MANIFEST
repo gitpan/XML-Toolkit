@@ -1,5 +1,7 @@
 bin/make_classes.pl
 Changes
+ex/aiml.pl
+ex/knock_knock.aiml
 ex/load_classes.pl
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
