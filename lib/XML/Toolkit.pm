@@ -1,6 +1,6 @@
 package XML::Toolkit;
 use strict;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 1;    # Magic true value required at end of module
 __END__
@@ -54,17 +54,15 @@ None reported.
 
 =head1 BUGS AND LIMITATIONS
 
-THIS IS ALPHA QUALITY. USE AT YOUR OWN RISK. 
-
-While XML::Toolkit has been used in two projects in production, it is still
-considered alpha and may cause monkeys to fly out of delicate places. 
+XML::Toolkit has been used in two production projects for over a year. This is
+slightly less than Moose when it was declared 1.0 (aka 'not scary'). Since an
+XML package is sufficiently less world shattering than an Object Orientation
+environment, I'm say we're ready to let the world in.
 
 Currently it only supports Auto-Discovery of class hierarchy from XML
 instances, and does not know anything about DTDs, RelaxNG, XML-Schema or
 anything else. Future work is being considered in this, and patches may be
 accepted if they come with documentation and tests.
-
-No bugs have been reported.
 
 Please report any bugs or feature requests to
 C<bug-xml-toolkit@rt.cpan.org>, or through the web interface at

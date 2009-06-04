@@ -15,9 +15,14 @@ requires 'MooseX::Types::Path::Class' => '0.04';
 requires 'XML::SAX::Writer'           => '0.50';
 requires 'Encode'                     => '2.26';
 requires 'Template'                   => '2.20';
+requires 'Devel::PackagePath'         => '0.01';
 
 build_requires 'Test::More' => '0.42';
 
 no_index 'directory' => 'ex';
+install_script 'bin/xmltk_make_classes';
 
+auto_set_repository;
+auto_manifest;
+auto_install;
 WriteAll;
