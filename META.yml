@@ -9,7 +9,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.91'
+generated_by: 'Module::Install version 1.00'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -24,7 +24,6 @@ requires:
   Devel::PackagePath: 0.01
   Moose: 0.92
   Moose::Autobox: 0.08
-  MooseX::App::Cmd: 0.04
   MooseX::MetaDescription: 0.03
   MooseX::Types::Path::Class: 0.04
   Template: 2.20
@@ -34,4 +33,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/perigrin/xml-toolkit.git
-version: 0.07
+version: 0.08
