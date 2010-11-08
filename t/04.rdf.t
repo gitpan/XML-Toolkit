@@ -3,8 +3,8 @@ use strict;
 use Test::More;
 use Test::XML;
 
-use aliased 'XML::Toolkit::Builder';
-use aliased 'XML::Toolkit::Loader';
+use aliased 'XML::Toolkit::Config::Container' => 'XMLTK::App';
+
 use aliased 'XML::Toolkit::Generator';
 
 my $xml = <<'END_XML';
@@ -27,7 +27,7 @@ my $map = {
     'http://purl.org/dc/elements/1.1/'            => 'XML::DC',
 };
 
-my $builder = Builder->new( { namespace_map => $map } );
+my $builder = XMLTK::App->new( { namespace_map => $map } )->builder;
 $builder->parse_string($xml);
 my $code = $builder->render();
 
@@ -38,11 +38,11 @@ if ($@) {
     done_testing;
     exit;
 }
-my $loader = Loader->new( { namespace_map => $map } );
+my $loader = XMLTK::App->new( { namespace_map => $map } )->loader;
 $loader->parse_string($xml);
 my $root = $loader->root_object;
 
-my $generator = Generator->new(
+my $generator = XMLTK::App->new(
     {
         namespace_map => {
             ''    => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -50,7 +50,7 @@ my $generator = Generator->new(
             'dc'  => 'http://purl.org/dc/elements/1.1/'
         }
     }
-);
+)->generator;
 
 $generator->render_object($root);
 

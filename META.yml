@@ -4,6 +4,7 @@ author:
   - 'Chris Prather  C<< <chris@prather.org> >>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
+  Test::Exception: 0
   Test::More: 0.94
   Test::XML: 0
 configure_requires:
@@ -21,16 +22,18 @@ no_index:
     - inc
     - t
 requires:
+  Bread::Board: 0
   Devel::PackagePath: 0.01
   Moose: 0.92
-  Moose::Autobox: 0.08
+  MooseX::Aliases: 0
   MooseX::MetaDescription: 0.03
   MooseX::Types::Path::Class: 0.04
   Template: 2.20
   XML::SAX: 0.96
   XML::SAX::Writer: 0.50
+  aliased: 0
   namespace::autoclean: 0
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/perigrin/xml-toolkit.git
-version: 0.08
+version: 0.09

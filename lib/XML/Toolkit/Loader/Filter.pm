@@ -1,19 +1,24 @@
 package XML::Toolkit::Loader::Filter;
 use Moose;
-use MooseX::AttributeHelpers;
-use Moose::Autobox;             
 use namespace::autoclean;
 
 extends qw(XML::Filter::Moose);
 with qw(XML::Toolkit::Builder::ClassRegistry);
 
 has objects => (
-    isa        => 'ArrayRef',
-    is         => 'ro',
-    auto_deref => 1,
-    lazy_build => 1,
-    traits     => ['Array'],
-    handles    => { 'add_object' => ['push'], }
+    isa     => 'ArrayRef',
+    is      => 'ro',
+    traits  => ['Array'],
+    lazy    => 1,
+    builder => '_build_objects',
+    clearer => 'reset_state',
+    handles => {
+        pop_object     => ['pop'],
+        add_object     => ['push'],
+        objects_count  => ['count'],
+        current_object => [ 'get', -1 ],
+        root_object    => [ 'get', 0 ],
+      }
 
 );
 
@@ -21,21 +26,11 @@ sub _build_objects { [] }
 
 sub parent_object {
     my ($self) = @_;
-    if ( $self->objects->length >= 2 ) {
+    if ( $self->objects_count >= 2 ) {
         return $self->objects->[-2];
     }
-    return undef if $self->objects->length == 1;
+    return undef if $self->objects_count == 1;
     return $self->objects->[-1];
-}
-
-sub current_object {
-    my ($self) = @_;
-    $self->objects->[-1];
-}
-
-sub root_object {
-    my ($self) = @_;
-    $self->objects->[0];
 }
 
 sub at_root_object { $_[0]->current_object == $_[0]->root_object }
@@ -46,22 +41,16 @@ sub load_class {
     return $name;
 }
 
-sub get_class_name {
-    my ( $self, $el ) = @_;
-    return $self->namespace . '::' . ucfirst $el->{LocalName};
-}
-
 sub create_and_add_object {
     my ( $self, $class, $el ) = @_;
     my %params =
-      map { $_->{Name} => $_->{Value} } values %{ $el->{Attributes} };
-
+      map { $_->{LocalName} => $_->{Value} } values %{ $el->{Attributes} };
     my $obj = $class->new(%params);
     $self->add_object($obj);
 
 }
 
-augment 'start_element' => sub {
+sub start_element {
     my ( $self, $el ) = @_;
 
     my $classname = $self->get_class_name($el);
@@ -70,8 +59,9 @@ augment 'start_element' => sub {
     if ( my $class = $self->load_class($classname) ) {
         $self->create_and_add_object( $class => $el );
     }
+    $self->add_element($el);
     return;
-};
+}
 
 sub append_to_parent {
     my ( $self, $parent, $el ) = @_;
@@ -86,20 +76,22 @@ sub set_object_text {
       if $self->current_object->can('text');
 }
 
-augment 'end_element' => sub {
+sub end_element {
     my ( $self, $el ) = @_;
     $self->set_object_text if $self->has_text;
     if ( my $parent = $self->parent_object ) {
         $self->append_to_parent( $parent => $el );
     }
-    $self->objects->pop unless $self->at_root_object;
-};
+    $self->pop_object unless $self->at_root_object;
+    $self->pop_element;
+    $self->reset_text;
+}
 
 sub render {
     warn shift->root_object->dump;
 }
 
-__PACKAGE__->meta->make_immutable(inline_constructor => 0);
+__PACKAGE__->meta->make_immutable;
 1;
 __END__
 
@@ -169,13 +161,7 @@ Insert description of subroutine here...
 
 =head1 DEPENDENCIES
 
-Modules used, version dependencies, core yes/no
-
 Moose
-
-MooseX::AttributeHelpers
-
-Moose::Autobox
 
 =head1 NOTES
 

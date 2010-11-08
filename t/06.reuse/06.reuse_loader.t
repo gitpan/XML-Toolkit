@@ -17,12 +17,20 @@ my $xml = <<'END_XML';
     <body>Don't forget me this weekend!</body>
 </note>
 END_XML
-ok( my $builder = XMLTK::App->new( xmlns => { '' => 'MyTest' } )->builder,
-    'Build XML::Toolkit::Builder' );
-lives_ok { $builder->parse_string($xml) } 'parsed the xml';
-ok( my $code = $builder->render(), 'render code' );
 
-eval $code;
+my $xml2 = <<'END_XML';
+<note>
+    <to>Jani</to>
+    <from>Tove</from>
+    <heading>Re: Reminder</heading>
+    <body>Bite me.</body>
+</note>
+END_XML
+
+my $app = XMLTK::App->new( xmlns => { '' => 'MyTest' } );
+my $builder = $app->builder;
+$builder->parse_string($xml);
+eval $builder->render();
 if ($@) {
     diag "Couldn't EVAL code $@";
     done_testing;
@@ -31,15 +39,12 @@ if ($@) {
 
 ok( my $loader = XMLTK::App->new( xmlns => { '' => 'MyTest' } )->loader,
     'Build XML::Toolkit::Loader' );
-$loader->parse_string($xml);
+lives_ok { $loader->parse_string($xml) } 'loader parsed';
 ok( my $root = $loader->root_object, 'extract root object' );
 
-ok( scalar @{ $root->to_collection } > 0, 'have entries' );
+lives_ok { $loader->parse_string($xml2), 'parse new xml' } 'loader parsed again';
+ok( my $root2 = $loader->root_object, 'extract second root object' );
 
-ok( my $generator = XMLTK::App->new( xmlns => { '' => '' } )->generator,
-    'Build XML::Toolkit::Loader' );
-$generator->render_object($root);
-my $output = join( '', $generator->output );
-is_xml( $xml, $output, 'XML compares' );
+ok($root != $root2, 'root and root2 are different');
 
 done_testing;

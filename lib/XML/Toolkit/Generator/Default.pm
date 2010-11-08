@@ -4,22 +4,15 @@ use Encode;
 use namespace::autoclean;
 
 extends qw(XML::Generator::Moose);
-with qw(XML::Toolkit::Generator::Interface);
-
-has namespace => (
-    isa        => 'Str',
-    is         => 'ro',
-    lazy_build => 1,
+with qw(
+  XML::Toolkit::Generator::Interface
+  XML::Toolkit::Builder::NamespaceRegistry
 );
-
-sub _build_namespace { 'MyApp' }
-
-with qw(XML::Toolkit::Builder::NamespaceRegistry);
 
 after 'xml_decl' => sub {
     my $self = shift;
-    for my $prefix ( keys %{ $self->namespace_map } ) {
-        my $uri = $self->namespace_map->{$prefix};
+    for my $pair ( $self->xmlns_pairs ) {
+        my ( $prefix, $uri ) = @$pair;
         $self->start_prefix_mapping( $prefix => $uri, );
     }
     $self->newline;
@@ -59,6 +52,13 @@ sub is_text_node {
     return 0;
 }
 
+sub is_cdata_node {
+    my ( $self, $attr ) = @_;
+    return 0 unless $self->is_node($attr);
+    return 1 if $attr->description->{cdata};
+    return 0;
+}
+
 sub is_attribute_node {
     my ( $self, $attr ) = @_;
     return 0 unless $self->is_node($attr);
@@ -89,7 +89,10 @@ sub parse_object {
 
     for my $attr ( $self->_get_sorted_filtered_attributes($meta) ) {
         if ( $self->is_text_node($attr) ) {
-            $self->characters( $attr->get_value($obj) );
+            my $data = $attr->get_value($obj);
+            $self->is_cdata_node($attr)
+              ? $self->cdata($data)
+              : $self->characters($data);
         }
         elsif ( $self->is_child_node($attr) ) {
             next unless my $value = $attr->get_value($obj);
@@ -105,8 +108,7 @@ sub parse_object {
 
 augment 'parse' => sub {
     my ( $self, $obj ) = @_;
-    $self->parse_object( $obj->meta, $obj,
-        { Name => $self->get_element_name( $obj->meta ) } );
+    $self->parse_object( $obj->meta, $obj, { Name => $self->get_element_name( $obj->meta ) } );
 
 };
 
@@ -122,7 +124,7 @@ sub _get_sorted_filtered_attributes {
       $meta->get_all_attributes;
 }
 
-__PACKAGE__->meta->make_immutable(inline_constructor => 0);
+__PACKAGE__->meta->make_immutable;
 1;
 __END__
 
