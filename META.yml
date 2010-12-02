@@ -36,4 +36,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/perigrin/xml-toolkit.git
-version: 0.09
+version: 0.10
