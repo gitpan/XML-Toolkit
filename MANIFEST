@@ -285,6 +285,7 @@ inc/Module/Install/WriteAll.pm
 lib/XML/Filter/Moose.pm
 lib/XML/Generator/Moose.pm
 lib/XML/Toolkit.pm
+lib/XML/Toolkit/App.pm
 lib/XML/Toolkit/Builder.pm
 lib/XML/Toolkit/Builder/ClassRegistry.pm
 lib/XML/Toolkit/Builder/ClassTemplate.pm
@@ -294,6 +295,7 @@ lib/XML/Toolkit/Cmd.pm
 lib/XML/Toolkit/Cmd/ClassTemplate.pm
 lib/XML/Toolkit/Cmd/Command/generate.pm
 lib/XML/Toolkit/Cmd/Command/validate.pm
+lib/XML/Toolkit/Config.pm
 lib/XML/Toolkit/Config/Container.pm
 lib/XML/Toolkit/Generator.pm
 lib/XML/Toolkit/Generator/Default.pm
