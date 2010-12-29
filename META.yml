@@ -26,6 +26,7 @@ requires:
   Devel::PackagePath: 0.01
   Moose: 0.92
   MooseX::Aliases: 0
+  MooseX::App::Cmd: 0
   MooseX::MetaDescription: 0.03
   MooseX::Types::Path::Class: 0.04
   Template: 2.20
@@ -36,4 +37,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/perigrin/xml-toolkit.git
-version: 0.12
+version: 0.13
