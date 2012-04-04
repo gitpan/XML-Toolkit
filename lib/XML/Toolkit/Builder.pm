@@ -1,4 +1,7 @@
 package XML::Toolkit::Builder;
+{
+  $XML::Toolkit::Builder::VERSION = '0.15';
+}
 use Moose;
 use Moose::Util::TypeConstraints qw(duck_type);
 use namespace::autoclean;
@@ -25,6 +28,10 @@ __END__
 =head1 NAME
 
 XML::Toolkit::Builder - A set of tools for Building XML Classes via XML::SAX Streams
+
+=head1 VERSION
+
+version 0.15
 
 =head1 SYNOPSIS
 

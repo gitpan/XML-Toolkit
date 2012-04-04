@@ -1,4 +1,7 @@
 package XML::Filter::Moose;
+{
+  $XML::Filter::Moose::VERSION = '0.15';
+}
 use Moose;
 use namespace::autoclean;
 
@@ -86,7 +89,7 @@ XML::Filter::Moose - A Moose-ified base class for XML::SAX
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.15
 
 =head1 SYNOPSIS
 

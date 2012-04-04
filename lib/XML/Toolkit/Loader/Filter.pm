@@ -1,8 +1,12 @@
 package XML::Toolkit::Loader::Filter;
+{
+  $XML::Toolkit::Loader::Filter::VERSION = '0.15';
+}
 use Moose;
 use namespace::autoclean;
 
 extends qw(XML::Filter::Moose);
+
 with qw(XML::Toolkit::Builder::ClassRegistry);
 
 has objects => (
@@ -101,7 +105,7 @@ XML::Toolkit::Loader::Filter - A class to ...
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.15
 
 =head1 SYNOPSIS
 

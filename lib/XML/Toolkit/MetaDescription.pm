@@ -1,4 +1,7 @@
 package XML::Toolkit::MetaDescription;
+{
+  $XML::Toolkit::MetaDescription::VERSION = '0.15';
+}
 use Moose;
 use Moose::Util::TypeConstraints;
 use namespace::autoclean;
@@ -16,7 +19,7 @@ XML::Toolkit::MetaDescription - A class to ...
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.15
 
 =head1 SYNOPSIS
 

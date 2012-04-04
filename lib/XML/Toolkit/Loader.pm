@@ -1,4 +1,7 @@
 package XML::Toolkit::Loader;
+{
+  $XML::Toolkit::Loader::VERSION = '0.15';
+}
 use Moose;
 use namespace::autoclean;
 
@@ -37,6 +40,10 @@ __END__
 =head1 NAME
 
 XML::Toolkit::Loader - A set of tools for Loading XML into Moose Objects
+
+=head1 VERSION
+
+version 0.15
 
 =head1 SYNOPSIS
 

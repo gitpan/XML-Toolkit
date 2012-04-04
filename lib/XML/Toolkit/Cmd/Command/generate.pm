@@ -1,17 +1,23 @@
 package XML::Toolkit::Cmd::Command::generate;
+{
+  $XML::Toolkit::Cmd::Command::generate::VERSION = '0.15';
+}
 use Moose;
 use namespace::autoclean;
 
-extends qw(MooseX::App::Cmd::Command XML::Toolkit::App);
+extends qw(MooseX::App::Cmd::Command);
 
 use XML::Toolkit::Config::Container;
 use MooseX::Types::Path::Class qw(File);
 use Moose::Util::TypeConstraints;
 
 with qw(
-  MooseX::Getopt::Dashes
-  XML::Toolkit::Cmd::ClassTemplate
+    MooseX::Getopt::Dashes
+    XML::Toolkit::App::Config
+    XML::Toolkit::Cmd::ClassTemplate
 );
+
+sub default_xmlns { { '' => 'MyApp', } }
 
 has input => (
     isa      => File,
@@ -57,6 +63,10 @@ __END__
 =head1 NAME
 
 XML::Toolkit::Cmd::Command::generate - generate clases from XML
+
+=head1 VERSION
+
+version 0.15
 
 =head1 SYNOPSIS
 

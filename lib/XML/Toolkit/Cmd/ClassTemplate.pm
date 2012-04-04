@@ -1,4 +1,7 @@
 package XML::Toolkit::Cmd::ClassTemplate;
+{
+  $XML::Toolkit::Cmd::ClassTemplate::VERSION = '0.15';
+}
 use Moose::Role;
 
 has template => (

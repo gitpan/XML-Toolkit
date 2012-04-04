@@ -1,4 +1,7 @@
 package XML::Toolkit::Generator::Default;
+{
+  $XML::Toolkit::Generator::Default::VERSION = '0.15';
+}
 use Moose;
 use Encode;
 use namespace::autoclean;
@@ -131,6 +134,10 @@ __END__
 =head1 NAME
 
 XML::Toolkit::Generator::Default - A Default Moose Object to XML Generator
+
+=head1 VERSION
+
+version 0.15
 
 =head1 SYNOPSIS
 

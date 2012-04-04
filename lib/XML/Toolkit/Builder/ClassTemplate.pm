@@ -1,4 +1,7 @@
 package XML::Toolkit::Builder::ClassTemplate;
+{
+  $XML::Toolkit::Builder::ClassTemplate::VERSION = '0.15';
+}
 use Moose::Role;
 use Template;
 use namespace::autoclean;
@@ -44,11 +47,11 @@ __END__
 
 =head1 NAME
 
-XML::Toolkit::Builder::ClassTemplate - A class to ...
+XML::Toolkit::Builder::ClassTemplate
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.15
 
 =head1 SYNOPSIS
 
@@ -58,7 +61,7 @@ use XML::Toolkit::Builder::ClassTemplate;
 
 The XML::Toolkit::Builder::ClassTemplate class implements ...
 
-=head1 SUBROUTINES / METHODS
+=head1 METHODS
 
 =head2 _build_template (method)
 
@@ -83,33 +86,3 @@ Parameters:
     class
 
 Insert description of method here...
-
-=head1 DEPENDENCIES
-
-Modules used, version dependencies, core yes/no
-
-Moose::Role
-
-Moose
-
-MooseX::AttributeHelpers
-
-=head1 NOTES
-
-...
-
-=head1 BUGS AND LIMITATIONS
-
-None known currently, please email the author if you find any.
-
-=head1 AUTHOR
-
-Chris Prather (perigrin@domain.tld)
-
-=head1 LICENCE
-
-Copyright 2009 by Chris Prather.
-
-This software is free.  It is licensed under the same terms as Perl itself.
-
-=cut

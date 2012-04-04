@@ -1,4 +1,7 @@
 package XML::Toolkit::Builder::Filter;
+{
+  $XML::Toolkit::Builder::Filter::VERSION = '0.15';
+}
 use Moose;
 use Moose::Util::TypeConstraints;
 use aliased 'XML::Toolkit::MetaDescription::Trait' => 'XMLTrait';
@@ -117,6 +120,10 @@ __END__
 
 =head1 NAME
 
+
+=head1 VERSION
+
+version 0.15
 XML::Toolkit::Builder::Filter - An XML::SAX Filter that generates Moose Classes
 from SAX events.
 

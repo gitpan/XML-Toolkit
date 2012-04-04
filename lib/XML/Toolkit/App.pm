@@ -1,12 +1,12 @@
 package XML::Toolkit::App;
+{
+  $XML::Toolkit::App::VERSION = '0.15';
+}
 use Moose;
-our $VERSION = '0.02';
 
 use XML::Toolkit::Config::Container;
 
 with qw( XML::Toolkit::Builder::NamespaceRegistry );
-
-sub default_xmlns { { '' => 'MyApp', } }
 
 has _config => (
     does     => 'XML::Toolkit::Config',
@@ -30,7 +30,7 @@ XML::Toolkit::App - An XML::Toolkit Application
 
 =head1 VERSION
 
-This documentation refers to version 0.02.
+version 0.15
 
 =head1 SYNOPSIS
 

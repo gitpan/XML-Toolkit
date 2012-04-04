@@ -1,4 +1,7 @@
 package XML::Toolkit::Builder::ClassRegistry;
+{
+  $XML::Toolkit::Builder::ClassRegistry::VERSION = '0.15';
+}
 use Moose::Role;
 use namespace::autoclean;
 
@@ -33,7 +36,7 @@ XML::Toolkit::Builder::ClassRegistry - A class to ...
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.15
 
 =head1 SYNOPSIS
 

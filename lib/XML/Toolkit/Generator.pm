@@ -1,4 +1,7 @@
 package XML::Toolkit::Generator;
+{
+  $XML::Toolkit::Generator::VERSION = '0.15';
+}
 use Moose;
 use XML::SAX::Writer;
 use namespace::autoclean;
@@ -24,6 +27,10 @@ __END__
 =head1 NAME
 
 XML::Toolkit::Generator - A set of tools for converting Moose Objects into XML
+
+=head1 VERSION
+
+version 0.15
 
 =head1 SYNOPSIS
 

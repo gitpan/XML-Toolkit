@@ -1,4 +1,7 @@
 package XML::Toolkit::Config::Container;
+{
+  $XML::Toolkit::Config::Container::VERSION = '0.15';
+}
 use Moose;
 use namespace::autoclean;
 use Bread::Board;

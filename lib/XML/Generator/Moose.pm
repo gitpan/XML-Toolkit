@@ -1,4 +1,7 @@
 package XML::Generator::Moose;
+{
+  $XML::Generator::Moose::VERSION = '0.15';
+}
 use Moose;
 use namespace::autoclean;
 extends qw(XML::Filter::Moose);
@@ -73,6 +76,10 @@ __END__
 =head1 NAME
 
 XML::Generator::Moose - A Moose based subclass of XML::SAX::Base
+
+=head1 VERSION
+
+version 0.15
 
 =head1 SYNOPSIS
     

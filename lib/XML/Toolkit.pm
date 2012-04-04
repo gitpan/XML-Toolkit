@@ -1,6 +1,8 @@
 package XML::Toolkit;
+{
+  $XML::Toolkit::VERSION = '0.15';
+}
 use strict;
-our $VERSION = '0.14';
 use XML::Toolkit::MetaDescription::Trait;
 
 1;    # Magic true value required at end of module
@@ -12,9 +14,7 @@ XML::Toolkit - A suit of XML tools with Antlers.
 
 =head1 VERSION
 
-This document describes XML::Toolkit version 0.12. 
-
-THIS VERSION BREAKS BACKWARDS COMPATIBILITY.
+version 0.15
 
 =head1 SYNOPSIS
 
@@ -32,7 +32,7 @@ or
 
 Typically you would use the C<xmltk> command line script.
 
-    xmltk generate --input mydocument.xml --namespace MyApp
+    xmltk generate --input mydocument.xml --xmlns ''=MyApp
     
 =head1 DESCRIPTION
 

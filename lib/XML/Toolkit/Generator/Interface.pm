@@ -1,4 +1,7 @@
 package XML::Toolkit::Generator::Interface;
+{
+  $XML::Toolkit::Generator::Interface::VERSION = '0.15';
+}
 use Moose::Role;
 
 requires qw(parse);
@@ -13,7 +16,7 @@ XML::Toolkit::Generator::Interface - A class to ...
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.15
 
 =head1 SYNOPSIS
 

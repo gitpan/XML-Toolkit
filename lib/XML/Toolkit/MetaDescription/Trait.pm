@@ -1,4 +1,7 @@
 package XML::Toolkit::MetaDescription::Trait;
+{
+  $XML::Toolkit::MetaDescription::Trait::VERSION = '0.15';
+}
 use Moose::Role;
 use namespace::autoclean;
 
@@ -14,6 +17,9 @@ has 'metadescription_classname' => (
 );
 
 package Moose::Meta::Attribute::Custom::Trait::XML;
+{
+  $Moose::Meta::Attribute::Custom::Trait::XML::VERSION = '0.15';
+}
 sub register_implementation { 'XML::Toolkit::MetaDescription::Trait' }
 
 1;
@@ -25,7 +31,7 @@ XML::Toolkit::MetaDescription::Trait - A class to ...
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.15
 
 =head1 SYNOPSIS
 

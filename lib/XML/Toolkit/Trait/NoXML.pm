@@ -1,4 +1,7 @@
 package XML::Toolkit::Trait::NoXML;
+{
+  $XML::Toolkit::Trait::NoXML::VERSION = '0.15';
+}
 use Moose::Role;
 use namespace::autoclean;
 
@@ -11,7 +14,7 @@ XML::Toolkit::Trait::NoXML - A class to ...
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.15
 
 =head1 SYNOPSIS
 
